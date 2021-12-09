@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/formStyle.css">
+</head>
+<body>
+    <form >
+        <input id="txtnam" type="text" name="name">
+        <label for="txtnam">Enter your Name</label>
+
+        <input id="txtprenom" type="text" name="lastName">
+        <label for="txtprenom">Enter your Last Name</label>
+
+        <input id="txtmail" type="email" name="mail">
+        <label for="txtmail">Enter your Email</label>
+
+        <input id="txtpass" type="password" name="pass">
+        <label for="txtpass">Enter your password</label>
+
+        <fieldset>
+        <input type="submit" value="se connecter">
+        <input type="button" value="s'inscreer">
+        </fieldset>        
+    </form>
+    <script>
+        let inputBtn = document.querySelector("form fieldset input[type=button]");
+        let inputEmail = document.querySelector("form input[name='mail']");
+        let inputs = document.querySelectorAll("form input[type=text]");
+        let inputPassword = document.querySelector("form input[type=password]");
+        let inputCnx = document.querySelector("form input[value='se connecter']");
+
+        let expEmail = /^[^ ]*@[^ ]+\.[a-zA-Z]{2,3}$/;
+        inputEmail.addEventListener('keyup',function(){
+            testVideOfInput(inputEmail,"Email Does Not Empty","format correct ");
+            testExpretion(inputEmail,expEmail,"your email no valid","your email is valid");
+        });
+
+        inputs.forEach((input) => {
+            input.addEventListener("blur",function(){
+                testVideOfInput(input,'This Information Does Not Empty','information validee');
+            });
+        });
+
+        let expPassword = /^[A-Z]{1}[^ ]{7,50}$/
+        inputPassword.addEventListener("keyup",function(e){
+            testVideOfInput(inputPassword,'Password Does Not Empty','write Password complete');
+            testExpretion(inputPassword,expPassword,'voter passe doit etre contien ou debut un letter majscule X ','voter passe est valide');
+        });
+
+        inputBtn.addEventListener('click',function(e){
+            document.forms[0].classList.remove("flipe");
+            if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
+                window.location.pathname = "www.google.com";
+                console.log("hello does not worked");
+            }else{
+                e.preventDefault();
+            }
+        });
+
+        inputCnx.addEventListener("click",function(e){
+            document.forms[0].classList.add("flipe");
+            if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
+                window.location.pathname = "www.google.com";
+                console.log("hello does not worked");
+            }else{
+                e.preventDefault();
+            }
+        });
+
+        function testExpretion(input={},exp=-/^$/,msgError="",msgvalid="") {
+            input.nextElementSibling.classList.add('fixe');
+            if(input.value.match(exp)) {
+                input.nextElementSibling.innerHTML =`${msgvalid}`;
+                input.nextElementSibling.style.color = 'green';
+                input.style.borderColor = "green";
+            }else {
+                input.nextElementSibling.innerHTML =`${msgError}`;
+                input.nextElementSibling.style.color = 'red';
+                input.style.borderColor = "red";
+            }
+        }
+
+        function testVideOfInput(input={},msgE="",msgV="") {
+            input.nextElementSibling.classList.add('fixe');
+            if(input.value.trim() != ""){
+                input.nextElementSibling.classList.add('fixe');
+                input.style.borderColor = "green";
+                input.nextElementSibling.innerHTML =`${msgV}`;
+                input.nextElementSibling.style.color = 'green';
+            }else {
+                input.nextElementSibling.innerHTML =`${msgE}`;
+                input.nextElementSibling.style.color = 'red';
+                input.style.borderColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>

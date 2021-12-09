@@ -1,0 +1,88 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+body {
+    font-family: 'Lora', serif;
+}
+form {
+width: 500px;
+max-width: 100%;
+display: flex;
+justify-content: space-evenly;
+align-self: center;
+flex-direction: column;
+margin: 20px auto;
+padding: 30px;
+box-shadow: 0px 0px 10px #eee,0px 0px 5px #eee;
+}
+form.flipe input[type='text'] ,
+form.flipe input[type='text'] + label{
+    display: none;
+}
+form label {
+    margin-block: 10px;
+    position: relative;
+    top: -50px;
+    left: 25px;
+    opacity: 0.8;
+    transition: 0.5s;
+}
+form input:focus + label {
+    top: -90px;
+    left: 10px;
+    opacity: 1;
+}
+label.fixe {
+    top: -90px;
+    left: 10px;
+    opacity: 1;
+}
+form input {
+    max-width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background-color: #cddeee12;
+    border-bottom: 2px solid #81adc1;
+    margin: 10px 0px;
+    font-weight: bold;
+} 
+form fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    border:none;
+}
+form fieldset input {
+    width: 40%;
+    border: 2px solid #81adc1;
+    color: #81adc1;
+    margin: 10px auto;
+    border-radius: 5px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.5s;
+}
+form fieldset input:hover {
+    color: #fff;
+    background-color: #81adc1;
+    box-shadow: 0px 0px 10px #aaa,0px 0px 3px #aaa;
+}
+
+/* <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet"> 
+font-family: 'Lora', serif;
+font-family: 'Quattrocento', serif;*/
+
+/* <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Palanquin:wght@100;200;400;500;700&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+font-family: 'Lora', serif;
+font-family: 'Palanquin', sans-serif;
+font-family: 'Quattrocento', serif; */
