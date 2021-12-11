@@ -8,33 +8,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/Normalize.css">
+    <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/formStyle.css">
 </head>
 <body>
-    <form >
-        <input id="txtnam" type="text" name="name">
-        <label for="txtnam">Enter your Name</label>
-
-        <input id="txtprenom" type="text" name="lastName">
-        <label for="txtprenom">Enter your Last Name</label>
-
-        <input id="txtmail" type="email" name="mail">
-        <label for="txtmail">Enter your Email</label>
-
-        <input id="txtpass" type="password" name="pass">
-        <label for="txtpass">Enter your password</label>
-
-        <fieldset>
-        <input type="submit" value="se connecter">
-        <input type="button" value="s'inscreer">
-        </fieldset>        
-    </form>
+    <div class="container">
+        <ul>
+            <li data-text="in">Sing In</li>
+            <li class="active" data-text="up">Sing Up</li>
+        </ul>
+        <form >
+            <i class="fas fa-user-circle fa-8x"></i>
+            <input id="txtnam" type="text" name="name">
+            <label for="txtnam">Enter your Name</label>
+    
+            <input id="txtprenom" type="text" name="lastName">
+            <label for="txtprenom">Enter your Last Name</label>
+    
+            <input id="txtmail" type="email" name="mail">
+            <label for="txtmail">Enter your Email</label>
+    
+            <input id="txtpass" type="password" name="pass">
+            <label for="txtpass">Enter your password</label>
+    
+            <fieldset>
+            <input type="submit" value="se connecter">
+            <input type="button" value="s'inscreer">
+            </fieldset>        
+        </form>
+    </div>
     <script>
         let inputBtn = document.querySelector("form fieldset input[type=button]");
         let inputEmail = document.querySelector("form input[name='mail']");
         let inputs = document.querySelectorAll("form input[type=text]");
         let inputPassword = document.querySelector("form input[type=password]");
         let inputCnx = document.querySelector("form input[value='se connecter']");
+        let listLis = document.querySelectorAll(".container ul li");
+
+        listLis.forEach((ele) => {
+            ele.addEventListener("click", function() {
+                if(!ele.classList.contains("active")) {
+                    let form = document.forms[0].classList;
+                    listLis.forEach((el) => el.classList.remove("active"));
+                    ele.classList.add("active");
+                    if(ele.dataset.text == 'in') {
+                        form.add("flipe");
+                        inputCnx.classList.remove("hidden");
+                        inputBtn.classList.add("hidden");
+                    } else {
+                        form.remove('flipe');
+                        inputCnx.classList.add("hidden");
+                        inputBtn.classList.remove("hidden");
+                    }
+                }
+            });
+        });
 
         let expEmail = /^[^ ]*@[^ ]+\.[a-zA-Z]{2,3}$/;
         inputEmail.addEventListener('keyup',function(){
@@ -55,7 +84,6 @@
         });
 
         inputBtn.addEventListener('click',function(e){
-            document.forms[0].classList.remove("flipe");
             if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
                 window.location.pathname = "www.google.com";
                 console.log("hello does not worked");
@@ -65,7 +93,6 @@
         });
 
         inputCnx.addEventListener("click",function(e){
-            document.forms[0].classList.add("flipe");
             if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
                 window.location.pathname = "www.google.com";
                 console.log("hello does not worked");
