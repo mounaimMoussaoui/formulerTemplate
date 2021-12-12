@@ -165,6 +165,9 @@ form fieldset input {
     text-transform: capitalize;
     cursor: pointer;
 }
+form fieldset input.hidden {
+    bottom: -100%;
+}
 @media (max-width:668px) {
     form fieldset input {
         width: 100%;
@@ -176,9 +179,7 @@ form fieldset input:hover {
     box-shadow: 0px 0px 10px #aaa,0px 0px 3px #aaa;
 }
 
-form fieldset input.hidden {
-    bottom: -100%;
-}
+
 
 /* <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

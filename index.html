@@ -33,7 +33,7 @@
             <label for="txtpass">Enter your password</label>
     
             <fieldset>
-            <input type="submit" value="se connecter">
+            <input type="submit" value="se connecter" class="hidden">
             <input type="button" value="s'inscreer">
             </fieldset>        
         </form>
@@ -65,42 +65,6 @@
             });
         });
 
-        let expEmail = /^[^ ]*@[^ ]+\.[a-zA-Z]{2,3}$/;
-        inputEmail.addEventListener('keyup',function(){
-            testVideOfInput(inputEmail,"Email Does Not Empty","format correct ");
-            testExpretion(inputEmail,expEmail,"your email no valid","your email is valid");
-        });
-
-        inputs.forEach((input) => {
-            input.addEventListener("blur",function(){
-                testVideOfInput(input,'This Information Does Not Empty','information validee');
-            });
-        });
-
-        let expPassword = /^[A-Z]{1}[^ ]{7,50}$/
-        inputPassword.addEventListener("keyup",function(e){
-            testVideOfInput(inputPassword,'Password Does Not Empty','write Password complete');
-            testExpretion(inputPassword,expPassword,'voter passe doit etre contien ou debut un letter majscule X ','voter passe est valide');
-        });
-
-        inputBtn.addEventListener('click',function(e){
-            if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
-                window.location.pathname = "www.google.com";
-                console.log("hello does not worked");
-            }else{
-                e.preventDefault();
-            }
-        });
-
-        inputCnx.addEventListener("click",function(e){
-            if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
-                window.location.pathname = "www.google.com";
-                console.log("hello does not worked");
-            }else{
-                e.preventDefault();
-            }
-        });
-
         function testExpretion(input={},exp=-/^$/,msgError="",msgvalid="") {
             input.nextElementSibling.classList.add('fixe');
             if(input.value.match(exp)) {
@@ -127,6 +91,44 @@
                 input.style.borderColor = "red";
             }
         }
+
+        inputEmail.addEventListener('keyup',function(){
+            let expEmail = /^[^ ]*@(gmail|email)\.(com|fr)$/;
+            testVideOfInput(inputEmail,"Email Does Not Empty","format correct ");
+            testExpretion(inputEmail,expEmail,"your email no valid","your email is valid");
+        });
+
+        inputs.forEach((input) => {
+            input.addEventListener("blur",function(){
+                testVideOfInput(input,'This Information Does Not Empty','information validee');
+            });
+        });
+
+        inputPassword.addEventListener("keyup",function(e){
+            let expPassword = /^[A-Z]{1}[^ ]{7,20}$/
+            testVideOfInput(inputPassword,'Password Does Not Empty','write Password complete');
+            testExpretion(inputPassword,expPassword,'voter passe doit etre contien ou debut un letter majscule X ','voter passe est valide');
+        });
+
+        inputBtn.addEventListener('click',function(e){
+            if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
+                window.location.pathname = "www.google.com";
+                console.log("hello does not worked");
+            }else{
+                e.preventDefault();
+            }
+        });
+
+        inputCnx.addEventListener("click",function(e){
+            if(inputEmail.style.borderColor == "green" && inputPassword.style.borderColor == "green") {
+                window.location.pathname = "www.google.com";
+                console.log("hello does not worked");
+            }else{
+                e.preventDefault();
+            }
+        });
+
+
     </script>
 </body>
 </html>
